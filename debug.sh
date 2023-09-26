@@ -10,4 +10,5 @@ sam local start-api \
     --docker-network $DOCKER_NETWORK \
     --region $AWS_REGION \
     --template $SAM_TEMPLATE_FILE \
-    --env-vars $ENV_FILE
+    --env-vars $ENV_FILE \
+    --debug-port ${DEBUG_PORT:-5858}

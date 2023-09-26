@@ -4,10 +4,20 @@ Dockerized AWS SAM local api-gateway
 
 ## Usage
 
-### Docker Build
+### Docker Build/Push
+
+#### Main Image
 
 ```bash
-docker build -t local-api-gateway:1.0
+docker build -t danwhitfieldsykes/local-api-gateway:1.0 .
+docker push danwhitfieldsykes/local-api-gateway:1.0
+```
+
+#### Debug Image
+
+```bash
+docker build -f Dockerfile-debug -t danwhitfieldsykes/local-api-gateway-debug:1.0 .
+docker push danwhitfieldsykes/local-api-gateway-debug:1.0
 ```
 
 ### Docker Compose
@@ -29,3 +39,7 @@ volumes:
     - './cdk.out:/app/cdk.out'
     - './resources:/app/resources'
 ```
+
+### Debug
+
+There is a separate `Dockerfile-debug` which builds an image which will start the AWS SAM debugger.
