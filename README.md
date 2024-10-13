@@ -2,6 +2,13 @@
 
 Dockerized AWS SAM local api-gateway
 
+## SAM base image versions
+
+From local-api-gateway:2.0 the base images are taken from [AWS SAM serverless-image-repositories](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-image-repositories.html).
+
+- danwhitfieldsykes/local-api-gateway:1.0 -> amazon/aws-sam-cli-build-image-python3.8
+- danwhitfieldsykes/local-api-gateway:2.0 -> public.ecr.aws/sam/build-python3.12
+
 ## Usage
 
 ### Docker Build/Push
@@ -9,22 +16,22 @@ Dockerized AWS SAM local api-gateway
 #### Main Image
 
 ```bash
-docker build -t danwhitfieldsykes/local-api-gateway:1.0 .
-docker push danwhitfieldsykes/local-api-gateway:1.0
+docker build -t danwhitfieldsykes/local-api-gateway:2.0 .
+docker push danwhitfieldsykes/local-api-gateway:2.0
 ```
 
 #### Debug Image
 
 ```bash
-docker build -f Dockerfile-debug -t danwhitfieldsykes/local-api-gateway-debug:1.0 .
-docker push danwhitfieldsykes/local-api-gateway-debug:1.0
+docker build -f Dockerfile-debug -t danwhitfieldsykes/local-api-gateway-debug:2.0 .
+docker push danwhitfieldsykes/local-api-gateway-debug:2.0
 ```
 
 ### Docker Compose
 
 ```yaml
 local-api:
-image: local-api-gateway:1.0
+image: local-api-gateway:2.0
 ports:
     - '3000:3000'
 environment:
